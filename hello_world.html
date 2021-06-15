@@ -1,16 +1,30 @@
 <html>
-    <body>
-        <p id="demo">test text</p>
+<body>
 
-        <script>
-        var x, y, z;  // Declare 3 variables
-        x = 5;    // Assign the value 5 to x
-        y = 6;    // Assign the value 6 to y
-        z = x + y;  // Assign the sum of x and y to z
-        
-        document.write("The value of z is " + z + ".");
-        </script>
-        
-        <p>test text</p>
-    </body>
+<p> This app will replace all English pronouns with third person
+    plural (e.g. he -> they).
+</p>
+
+Input text here: <input id="text_input">
+
+<button id="return">Return results</button>
+ 
+
+<div id="result"></div>
+ 
+<script>
+function repeat_input() {
+    var text_in = document.getElementById('text_input').value;
+
+    // practicing string manipulation, replace all needs the
+    // global flag and won't work on IE or Samsung Internet
+    text_in = text_in.replaceAll(/\b([Hh][Ee])\b/g, "they");  
+    
+    document.getElementById('result').innerHTML = text_in;
+}
+ 
+document.getElementById('return').addEventListener('click', repeat_input);
+</script>
+ 
+</body>
 </html>

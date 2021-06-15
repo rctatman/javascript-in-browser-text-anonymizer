@@ -85,6 +85,20 @@ I want a webpage where a user can enter text & have it "anonymized" (not true an
 
 ## Day 2: June 15
 
-* Make a text input box & then print the same text back out
-* [If time] Make it all lower case
-* Look up things we run across: 
+* [X] Make a text input box & then print the same text back out
+* [X] String manipulation (all lower case?)
+* Look up things we run across:
+  * wasm
+    * seems super low level implimentaion of web stuff, maybe not super relevent to me right now
+  * canonical reference for javascript? Looks like there are a few, but [the Mozilla one](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/About) says it's a complete reference
+    * ecma international (the governing body that sets standardizations for client-side scripting langauges including JavaScript)
+  * [Hoisting](https://developer.mozilla.org/en-US/docs/Glossary/Hoisting)
+    * functions can be used above where they're declared in your code (since they're loaded into memory first)
+    * you can use variables above where you declare them the first time but ONLY if you declare them using var (const & let won't work, and while initalizing also serves as a declartion it doesn't load the variable into memory during compiling)
+
+## Day 3: June 16
+
+* [] JavaScript NLP packages?
+* [] Pronoun replacement!
+  * lookup table? (easier to include more pronouns)
+* Anything to look up:
