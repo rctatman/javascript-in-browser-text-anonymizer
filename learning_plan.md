@@ -73,7 +73,7 @@ I want a webpage where a user can enter text & have it "anonymized" (not true an
   * yep! javascript is run from within an HTML page; you can show the output by writing it to document or overwriting an existing HTML element
   * document is the head node for an HTML page, all commands will be attributes (?) of it
 * [X] Learn about into different frameworks
-  * node.js: (i think) a way to run your scripts all server-side, let you have have the same stuf cross-platform; I don't think it will be very useful for this project b/c I want it to work all client side
+  * node.js: (i think) a way to run your scripts all server-side, let you have have the same stuff cross-platform; I don't think it will be very useful for this project b/c I want it to work all client side 
   * react: front end library to make UIs & stuff like that. JSX & props & components are react things (react seems to have a very distinct vocabulary it doesn't share with base JS)
     * JSX: JavaScript XML, used for formatting javascript stuff in react (can also use regular javascript)
     * props: react version of function arguments and html attributes, lets you pass data between compontents
@@ -98,7 +98,22 @@ I want a webpage where a user can enter text & have it "anonymized" (not true an
 
 ## Day 3: June 16
 
-* [] JavaScript NLP packages?
+* [X] JavaScript NLP packages?
+  * POS tagging? [This package](https://github.com/dariusk/pos-js) looks like a good start
+  * Try to install using npm
+  * Need install npm first; [installed node(https://nodejs.org/en/download/)
+  * TODO: how to look up matching string in a hierachical iterable object (not sure what the output of pos.Tagger().tag() looks like)
+    * from chat: output might be a list of lists? search time complexity might be very bad <.<
+* Anything to look up:
+  * do I have to use node to use NPM? Answer: I'm doing it, seems like the easiest way
+  * JavaScript loops (there are seven of them & apparently you can misapply them to the wrong sort of object and make your life hard)
+    * For... in: loops over enumerable properties of the object
+    * for... of: loops over iterable objects (e.g. arrays)  
+
+
+## Day 4: June 17
+* [] Get the pos-js package up & running
+  * search & replace in list of lists
 * [] Pronoun replacement!
   * lookup table? (easier to include more pronouns)
-* Anything to look up:
+  * include neo-pronouns
