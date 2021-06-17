@@ -10,7 +10,8 @@ I want a webpage where a user can enter text & have it "anonymized" (not true an
 
 * build a privacy perserving in-browser text anonymiser
   * pronoun replacement
-    * rule-based lookup (using a list of pronouns)
+    * rule-based lookup (using a list of pronouns?)
+    * ended up using POS tagging 
   * detect & remove proper names
     * using capitalization
     * using some sort of lookup 
@@ -112,8 +113,35 @@ I want a webpage where a user can enter text & have it "anonymized" (not true an
 
 
 ## Day 4: June 17
-* [] Get the pos-js package up & running
-  * search & replace in list of lists
-* [] Pronoun replacement!
+* [X] Get the pos-js package up & running
+  * tried: importing files directly from the old Google version (doesn't require node)
+  * ran into not being able to see the console logs: trying to launch broswer let to a werid windows error
+* [X] Pronoun replacement!
   * lookup table? (easier to include more pronouns)
-  * include neo-pronouns
+  * ended up just looping through the POS tagged text & replacing dependent on the POS tag (all personal pronouns -> they)
+* things to look up
+  * prototype? the way that javascript handles inheritence: objectConstructor.ptotype.whatever gets passed onto to objects constructed using objectConstructor
+  * script tags: in the html, tell the compiler (??) to go grab (and run?) a specific script. More deets [here](https://shawnr.gitbooks.io/practical-introduction-to-javascript/content/basic-syntax/41-adding-javascript-to-an-html-file.html)
+  * imports only needed for stuff that's been exported first
+
+
+Graveyard: 
+
+<div id="result_pos"></div>
+
+function test_pos() {
+    var words = new pos.Lexer().lex('This is some sample text. This text can contain multiple sentences.');
+    var tagger = new pos.Tagger();
+    var taggedWords = tagger.tag(words);
+    /* for (i in taggedWords) {
+        var taggedWord = taggedWords[i];
+        var word = taggedWord[0];
+        var tag = taggedWord[1];
+        console.log(word + " /" + tag);
+    } */
+
+    var taggedWord = taggedWords[0]
+    document.getElementById('result_pos').innerHTML = taggedWord;
+}
+
+document.getElementById('return').addEventListener('click', test_pos);

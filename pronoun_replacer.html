@@ -1,0 +1,58 @@
+<html>
+<head>
+    <!-- this laods in these javascript files
+    as if they had been written in-line here -->
+    <script src = "POSTagger.js" defer></script>
+    <script src = "lexer.js" defer></script>
+    <script src = "lexicon.js_" defer></script>
+</head>
+<body>
+
+<p> This app will replace all English personal pronouns with third person
+    plural (e.g. he -> they). Excludes neopronouns, and is based on a tag set w/ some issues (hers and I aren't tagged as pronouns, for example).
+</p>
+
+Input text here: <input id="text_input">
+
+<button id="return">Return results</button>
+ 
+<div id="result"></div>
+
+<script>
+function change_pronouns() {
+    var text_in = document.getElementById('text_input').value;
+
+    // practicing string manipulation, replace all needs the
+    // global flag and won't work on IE or Samsung Internet
+    // text_in = text_in.replaceAll(/\b([Hh][Ee])\b/g, "they"); 
+    
+    var words = new Lexer().lex(text_in);
+    var taggedWords = new POSTagger().tag(words);
+    for (i in taggedWords){
+        var taggedWord = taggedWords[i];
+        // declare a new object for our output
+        var text_out = "";
+        // loop through our tagged input
+        for (i in taggedWords) { 
+            var taggedWord = taggedWords[i];
+            if (taggedWord[1] == "PRP"){
+                // check if the tag is PP, if so change word to "they"
+                text_out += "they "
+            } else if (taggedWord[1] == "PRP$") {
+                // check PPZ, if yes change word to "thier"
+                text_out += "their "
+            } else {
+                // else don't change word
+                text_out += taggedWord[0] + " "
+            }
+        }
+    }
+    document.getElementById('result').innerHTML = text_out;
+}
+
+document.getElementById('return').addEventListener('click', change_pronouns);
+// TODO: add abilty to generated output on "enter" 
+
+</script>
+</body>
+</html>
